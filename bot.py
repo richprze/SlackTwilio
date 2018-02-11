@@ -44,6 +44,18 @@ def get_twilio_images_for_slack():
     # TODO
     return True
 
+def archive_channel(channel_id):
+    # TODO
+    return True
+
+def new_text_alert():
+    # TODO: send alert to admin channel
+    return True
+
+def auto_reply():
+    # TODO: send auto reply
+    return True
+
 ####################
 # 
 # Routes
@@ -53,7 +65,8 @@ def get_twilio_images_for_slack():
 # add new number
 @app.route('/add', methods=['POST'])
 def add_number():
-    # Handles submission of the add number dialog
+    # Process submission of the add number dialog
+    ## Name, number, message, send msg T/F, channel name (optional)
     # Creates user in DB
     # Creates user's slack channel
     # Sends welcome message to user's phone number via SMS
@@ -61,10 +74,36 @@ def add_number():
     msg = "OK"
     return Response(msg), 200
 
+# serve the add number dialog to slack
 @app.route('/adddialog', methods=['POST'])
 def trigger_add_dialog():
     # Handles slash command request
     # Triggers a dialog in slack for user to add phone number
+    return Response(), 200
+
+# remove user
+@app.route('/remove', methods=['POST'])
+def remove_number():
+    # Remove from the DB
+    # Archive the slack channel
+    return Response(), 200
+
+# List all users
+@app.route('/list', methods=['POST'])
+def list_numbers():
+    # Get list of all numbers and channels
+    # Post list in admin channel
+    return Response(), 200
+
+# set alert rules
+@app.route('/alerts', methods=['POST', 'GET'])
+def manage_alerts():
+    # TODO
+    return Response(), 200
+
+# set auto reply rules
+@app.route('/autoreplies', methods=['POST', 'GET'])
+    # TODO
     return Response(), 200
 
 # slack to twilio
